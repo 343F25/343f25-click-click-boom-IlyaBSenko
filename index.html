@@ -155,23 +155,31 @@
     let lastSound = clickSound;
 
     // TODO: 1 - make it such that if any table cell is clicked, the onClick function below is executed
+    document.querySelector('tbody').addEventListener('click', onClick);
 
+    // ------
     function onClick(ev) {
+      const td = ev.target.closest('td');
+      if (!td || !ev.currentTarget.contains(td)) return;
+
       lastSound.pause()
       lastSound.currentTime = 0;
       clickCount++
       if (clickCount % 3 == 0) {
         // boom
+        boomSound.currentTime = 0;
         boomSound.play();
         lastSound = boomSound
       } else {
+        clickSound.currentTime = 0;
         clickSound.play();
         lastSound = clickSound
       }
 
       console.log(`ev in onClick ${ev}`)
+      
       // TODO: 2 - REMOVE THE TABLE CELL THAT WAS CLICKED
-
+      td.remove();
     }
   </script>
 </body>
