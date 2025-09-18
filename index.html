@@ -156,11 +156,13 @@
 
     // TODO: 1 - make it such that if any table cell is clicked, the onClick function below is executed
     document.querySelector('tbody').addEventListener('click', onClick);
+    // query selector for table clicker thing
 
     // ------
     function onClick(ev) {
       const td = ev.target.closest('td');
       if (!td || !ev.currentTarget.contains(td)) return;
+      // return if not
 
       lastSound.pause()
       lastSound.currentTime = 0;
@@ -170,6 +172,7 @@
         boomSound.currentTime = 0;
         boomSound.play();
         lastSound = boomSound
+        // added for sounds comfioramtiaton
       } else {
         clickSound.currentTime = 0;
         clickSound.play();
