@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Click, Click, BOOM 💥</title>
-  <link rel="icon" href="https://fav.farm/💣">
+  <link rel="icon" href="https://fav.farm/💣" />
   <style>
     table {
       background-color: #450084;
@@ -14,175 +14,136 @@
 
     td {
       background-color: wheat;
-      border: 0.25rem solid #8EE4D7 ;
+      border: 0.25rem solid #8EE4D7;
+    }
+
+    /* New: style for rows with odd number of cells */
+    /* (If your assignment gives a different .odd style, replace this block) */
+    tr.odd td {
+      background-color: #dacce6; /* thistle */
+    }
+
+    /* Optional: center the BOOM heading a bit */
+    h1 {
+      margin: 0.25rem 0 0.75rem;
+      font-family: system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+  <!-- New: heading that we’ll toggle on BOOMs -->
+  <h1 id="boomHeading"></h1>
+
   <table>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td>
       </tr>
     </tbody>
   </table>
+
   <!-- Click3.wav by EdgardEdition -- https://freesound.org/s/113093/ -- License: Attribution 3.0 -->
   <audio id="click" src="113093__edgardedition__click3.wav"></audio>
 
   <!-- Boom_C_02 by cabled_mess -- https://freesound.org/s/350975/ -- License: Creative Commons 0 -->
   <audio id="boom" src="350975__cabled_mess__boom_c_02.wav"></audio>
+
   <script>
     let clickCount = 0;
-    const clickSound = document.getElementById('click')
-    const boomSound = document.getElementById('boom')
+    const clickSound = document.getElementById('click');
+    const boomSound  = document.getElementById('boom');
+    const boomHeading = document.getElementById('boomHeading');
     let lastSound = clickSound;
+    let showBoomText = false; // toggles the H1 content
 
-    // TODO: 1 - make it such that if any table cell is clicked, the onClick function below is executed
+    // Wire up clicks anywhere in the tbody to the handler
     document.querySelector('tbody').addEventListener('click', onClick);
-    // query selector for table clicker thing
 
-    // ------
+    function updateRowOddClass(tr) {
+      // Count current cells in this row and toggle the .odd class
+      const cells = tr.querySelectorAll('td').length;
+      if (cells % 2 === 1) {
+        tr.classList.add('odd');
+      } else {
+        tr.classList.remove('odd');
+      }
+    }
+
     function onClick(ev) {
       const td = ev.target.closest('td');
       if (!td || !ev.currentTarget.contains(td)) return;
-      // return if not
 
-      lastSound.pause()
+      // Reset/stop the last sound for immediate replay
+      lastSound.pause();
       lastSound.currentTime = 0;
-      clickCount++
-      if (clickCount % 3 == 0) {
-        // boom
+
+      // Increment total click count to determine BOOMs
+      clickCount++;
+
+      if (clickCount % 3 === 0) {
+        // BOOM branch
         boomSound.currentTime = 0;
         boomSound.play();
-        lastSound = boomSound
-        // added for sounds comfioramtiaton
+        lastSound = boomSound;
+
+        // Toggle the BOOM heading text on each boom
+        showBoomText = !showBoomText;
+        boomHeading.textContent = showBoomText ? 'BOOM' : '';
       } else {
+        // Regular click branch
         clickSound.currentTime = 0;
         clickSound.play();
-        lastSound = clickSound
+        lastSound = clickSound;
       }
 
-      console.log(`ev in onClick ${ev}`)
-      
-      // TODO: 2 - REMOVE THE TABLE CELL THAT WAS CLICKED
-      td.remove(); // simple remove function on table cell
+      // Remove the clicked cell
+      const tr = td.parentElement;
+      td.remove();
+
+      // Recompute odd/even state for this row after removal
+      updateRowOddClass(tr);
+
+      // (Optional) If a row becomes empty, you could also remove the row:
+      // if (!tr.querySelector('td')) tr.remove();
     }
   </script>
 </body>
